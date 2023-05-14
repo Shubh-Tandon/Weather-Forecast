@@ -1,7 +1,6 @@
 .myContainer {
     width: 100%;
     height: 100vh;
-
     background-color: seashell;
 
 }
@@ -10,7 +9,6 @@
 #mainContainer {
     display: flex;
     flex-direction: row;
-    /* background-color: blue; */
     justify-content: center;
 }
 
@@ -23,11 +21,59 @@
 
 .cityInside {
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: space-around; */
 }
 
 
 
 .cityAllData {
     display: flex;
+    justify-content: space-evenly;
+    /* font-size: 2rem; */
 }
+
+
+/* -------------media queries---------------- */
+
+@media only screen and (max-width: 768px){
+    .cityAllData{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cityCard{
+        margin: 10px auto;
+        width: 80%;
+     }
+
+     
+
+
+     .cityInside{
+        display: flex;
+        flex-direction: column;
+     }
+}
+
+
+@media only screen and (min-width: 768px){
+    .cityCard{
+       margin: 10px;
+    }
+}
+
+
+@media only screen and (max-width: 480px){
+    .cityCard{
+       width: 80vw;
+       display: flex;
+       flex-direction: column;
+    }
+}
+/* @media only screen and (max-width: 540px){
+    .cityCard{
+       width: 80vw;
+       display: flex;
+       flex-direction: column;
+    }
+} */

@@ -1,64 +1,3 @@
-const showWeather = (city) => {
-  let weatherHtml = "";
-
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "a6d70cf5b0msh787a1ebf4670e71p1e0f7djsn97c78a2cfb27",
-      "X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com",
-    },
-  };
-
-  fetch(
-    `https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=${city}`,
-    options
-  )
-    .then((res) => res.json())
-    .then((value) => {
-      console.log(value);
-
-      weatherHtml += value.temp
-        ? `<div class= "cityAllData">
-      <div class="card w-50 my-4 cityCard mx-2">
-        <h3 class="card-title d-flex justify-content-center my-2">${city.toUpperCase()}</h3>
-        <div class="card-body cityInside">
-      <div class="cityBox">
-      <h4 class="card-text">Temperature ${value.temp}&#8451;</h4>
-      <h4 class="card-text">Feels Like ${value.feels_like}&#8451;</h4>
-      </div>
-      <div class="cityBox">
-      <h4 class="card-text">Minimum ${value.min_temp}&#8451;</h4>
-      <h4 class="card-text">Maximum ${value.max_temp}&#8451;</h4>
-        </div>
-  
-    </div>
-    </div>
-        
-    
-    <div class="card cityCard my-4 mx-5 w-50">
-    <h3 class="card-title d-flex justify-content-center my-2">WIND</h3>
-      <div class="card-body cityInside">
-      <div>
-      <h4 class="card-text">Humidity ${value.humidity}</h4>
-      <h4 class="card-text">Cloud Pct ${value.cloud_pct}</h4>
-      </div>
-      <div>
-      <h4 class="card-text">Wind Degree ${value.wind_degrees}</h4>
-      <h4 class="card-text">Wind Speed ${value.wind_speed}</h4>
-      </div>
-      </div>
-      </div>
-
-      `
-        : "";
-
-      let inpCityWeather = document.getElementById("inpCity");
-      //   console.log("inpCityWeather", inpCityWeather);
-      inpCityWeather.innerHTML = weatherHtml;
-      //   console.log("weatherHtml", weatherHtml);
-    });
-};
-
 const fet = async () => {
   let iHtml = "";
   let cityHtml = "";
@@ -111,7 +50,7 @@ const fet = async () => {
   allData.then((res) => {
     console.log(res);
     for (i in res) {
-      iHtml += `<div class="card mx-4 my-2 cityCard" style="width: 16rem;">
+      iHtml += `<div class="card my-2 cityCard" style="width: 16rem;">
               <div class="card-body">
               ${
                 i == 0
@@ -137,6 +76,67 @@ const fet = async () => {
 };
 
 fet();
+
+const showWeather = (city) => {
+  let weatherHtml = "";
+
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "a6d70cf5b0msh787a1ebf4670e71p1e0f7djsn97c78a2cfb27",
+      "X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com",
+    },
+  };
+
+  fetch(
+    `https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=${city}`,
+    options
+  )
+    .then((res) => res.json())
+    .then((value) => {
+      console.log(value);
+
+      weatherHtml += value.temp
+        ? `<div class= "cityAllData">
+      <div class="card my-4 cityCard ">
+        <h3 class="card-title d-flex justify-content-center my-2">${city.toUpperCase()}</h3>
+        <div class="card-body cityInside">
+      <div class="cityBox">
+      <h4 class="card-text">Temperature ${value.temp}&#8451;</h4>
+      <h4 class="card-text">Feels Like ${value.feels_like}&#8451;</h4>
+      </div>
+      <div class="cityBox">
+      <h4 class="card-text">Minimum ${value.min_temp}&#8451;</h4>
+      <h4 class="card-text">Maximum ${value.max_temp}&#8451;</h4>
+        </div>
+  
+    </div>
+    </div>
+        
+    
+    <div class="card cityCard my-4">
+    <h3 class="card-title d-flex justify-content-center my-2">WIND</h3>
+      <div class="card-body cityInside">
+      <div>
+      <h4 class="card-text">Humidity ${value.humidity}</h4>
+      <h4 class="card-text">Cloud Pct ${value.cloud_pct}</h4>
+      </div>
+      <div>
+      <h4 class="card-text">Wind Degree ${value.wind_degrees}</h4>
+      <h4 class="card-text">Wind Speed ${value.wind_speed}</h4>
+      </div>
+      </div>
+      </div>
+
+      `
+        : "";
+
+      let inpCityWeather = document.getElementById("inpCity");
+      //   console.log("inpCityWeather", inpCityWeather);
+      inpCityWeather.innerHTML = weatherHtml;
+      //   console.log("weatherHtml", weatherHtml);
+    });
+};
 
 function showData() {
   console.log("show data clicked");
